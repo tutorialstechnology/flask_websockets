@@ -3,10 +3,18 @@ socket.on('connect', function() {
     socket.emit('client_connected', {data: 'New client!'});
 });
 
+socket.on('message', function (data) {
+    console.log('message form backend ' + data);
+});
+
+socket.on('alert', function (data) {
+    alert('Alert Message!! ' + data);
+});
+
 function json_button() {
-    socket.send('json_button', '{"message": "test"}');
+    socket.send('{"message": "test"}');
 }
 
 function alert_button() {
-    socket.emit('alert_button', '{"message": "alert!!"}')
+    socket.emit('alert_button', 'Message from client!')
 }
